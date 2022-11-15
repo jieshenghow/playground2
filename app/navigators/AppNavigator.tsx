@@ -68,23 +68,9 @@ const AppStack = observer(function AppStack() {
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName={isAuthenticated ? "Welcome" : "Login"} // @demo remove-current-line
+      initialRouteName={"Welcome"} // @demo remove-current-line
     >
-      {/* @demo remove-block-start */}
-      {isAuthenticated ? (
-        <>
-          {/* @demo remove-block-end */}
-          <Stack.Screen name="Welcome" component={WelcomeScreen} />
-          {/* @demo remove-block-start */}
-          <Stack.Screen name="Demo" component={DemoNavigator} />
-        </>
-      ) : (
-        <>
-          <Stack.Screen name="Login" component={LoginScreen} />
-        </>
-      )}
-      {/* @demo remove-block-end */}
-      {/** 🔥 Your screens go here */}
+      <Stack.Screen name="Welcome" component={WelcomeScreen} />
     </Stack.Navigator>
   )
 })
@@ -97,6 +83,7 @@ export const AppNavigator = observer(function AppNavigator(props: NavigationProp
   useBackButtonHandler((routeName) => exitRoutes.includes(routeName))
 
   return (
+
     <NavigationContainer
       ref={navigationRef}
       theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
